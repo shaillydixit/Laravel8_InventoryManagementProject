@@ -4,10 +4,22 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+// const { default: VueRouter } = require('vue-router');
+
 require('./bootstrap');
 
-window.Vue = require('vue').default;
+import Vue from 'vue'
+import VueRouter from 'vue-router';
+Vue.use(VueRouter)
 
+// router imported
+import {routes} from './routes';
+
+// window.Vue = require('vue').default;
+ const router = new VueRouter({
+     routes,
+     mode: 'history'
+ })
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -29,4 +41,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    router
 });
